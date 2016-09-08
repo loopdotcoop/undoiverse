@@ -1,0 +1,25 @@
+{
+  "name": "undoiverse",
+  "version": "0.0.1",
+  "description": "Manages interactions between users and elements in a free roaming 3D environment",
+  "main": "build/undoiverse.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loopdotcoop/undoiverse.git"
+  },
+  "keywords": [
+    "3d",
+    "vr",
+    "undo",
+    "git"
+  ],
+  "author": "Rich Plastow <rich@richplastow.com> (http://richplastow.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/loopdotcoop/undoiverse/issues"
+  },
+  "homepage": "https://github.com/loopdotcoop/undoiverse#readme"
+}
