@@ -285,86 +285,87 @@ the ‘ATA’ date matches or beats the ‘ETA’ date, then we’re winning!
   ETA: 20160908  
   ATA: 20160909
 
+- README.md second draft.  
+  V: 0.0.2  
+  ETA: 20160914  
+  ATA: 20160914
+
 
 ### Roadmap
 
-- README.md Second Draft.  
-  V: 0.0.2  
-  ETA: 20160914  
-
-- README.md Third Draft.  
+- README.md third draft.  
   V: 0.0.3  
-  ETA: 20160921 
+  ETA: 20161026 
 
-- Change README.md from ‘Draft’ to ‘Live’ status. This means that the project 
+- Change README.md from ‘draft’ to ‘live’ status. This means that the project 
   goals, scope and API have been agreed by the team and set in stone.  
   V: 0.1.0  
-  ETA: 20160928  
+  ETA: 20161102  
 
 - Non-functional module with a few basic unit tests, which all fail.  
   Build and deploy systems in place.  
   V: 0.2.0  
-  ETA: 20161005  
+  ETA: 20161109  
 
 - Barely functional module which passes a few basic unit tests.  
   V: 0.3.0  
-  ETA: 20161012  
+  ETA: 20161116  
 
 - A stronger core (details tbc), passing a decent set of unit tests.  
   V: 0.4.0  
-  ETA: 20161019  
+  ETA: 20161123  
 
 - Plugin system (including homegrown plugins) working in principal, but no work
   on real plugins yet.  
   Core essentially working, but not optimised or thoroughly tested.  
   V: 0.5.0  
-  ETA: 20161026  
+  ETA: 20161130  
 
 - Core production-ready, thoroughly tested and reasonably well optimised.  
   V: 0.6.0  
-  ETA: 20161109  
+  ETA: 20161214  
 
 - Command Line basically functional, passing a fairly good set of unit tests.  
   V: 0.7.0  
-  ETA: 20171116  
+  ETA: 20161221  
 
 - Core usage examples complete, including examples of homegrown plugins.  
   Documentation tidy and correct.  
   V: 1.0.0  
-  ETA: 20161123  
+  ETA: 20170111  
 
 - ‘Git Archive’ history plugin production-ready.  
   V: 1.1.0  
-  ETA: 20161207  
+  ETA: 20170125  
 
 - Other history plugins production-ready: Rewind and Playback, Undo and Redo, 
   Fork and Merge, Historical Analysis.  
   V: 1.2.0  
-  ETA: 20161228  
+  ETA: 20170208  
 
 - Query plugins production-ready: Search and Filter, Move and Zoom Viewpoint.  
   V: 1.3.0  
-  ETA: 20170125  
+  ETA: 20170301  
 
 - Ownership plugins production-ready: Open and Close, Save and Save As, 
   Credentials and Permissions, Lock and Unlock.  
   V: 1.4.0  
-  ETA: 20170222  
+  ETA: 20170322  
 
 - Composition plugins production-ready: Group and Ungroup, Copy, Cut, Paste
   and Duplicate.  
   V: 1.5.0  
-  ETA: 20170322  
+  ETA: 20170412  
 
 - Communication plugins production-ready: Broadcast and Notifications, 
   Conference and Private Messaging.  
   V: 1.6.0  
-  ETA: 20170419  
+  ETA: 20170503  
 
 - Polish the Command Line experience, with an excellent set of unit tests which 
   find problems across a wide range of platforms.  
   V: 1.7.0  
-  ETA: 20170510  
+  ETA: 20170517  
 
 - Plugin usage examples complete.  
   Documentation tidy and correct.  
@@ -389,4 +390,4 @@ available to other Undoiverse devs.
 
 ---
 
-#### README draft 1, 9th September 2016
+#### README draft 2, 14th September 2016

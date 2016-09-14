@@ -1,6 +1,6 @@
 {
   "name": "undoiverse",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Manages interactions between users and elements in a free roaming 3D environment",
   "main": "build/undoiverse.js",
   "scripts": {
@@ -17,6 +17,9 @@
     "git"
   ],
   "author": "Rich Plastow <rich@richplastow.com> (http://richplastow.com/)",
+  "contributors": [
+    "John Egan <john@jenca.io> (https://github.com/bigdoods)"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/loopdotcoop/undoiverse/issues"
