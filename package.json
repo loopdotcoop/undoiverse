@@ -1,8 +1,8 @@
 {
   "name": "undoiverse",
-  "version": "0.0.2",
-  "description": "Manages interactions between users and elements in a free roaming 3D environment",
-  "main": "build/undoiverse.js",
+  "version": "0.0.3",
+  "description": "Manages Clients, Entities and Locations in a free roaming multiuser creative application",
+  "main": "undoiverse.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
