@@ -4,7 +4,7 @@
 
   <meta charset="utf-8">
   <title>Undoiverse</title>
-  <meta name="description" content="An open source Javascript module which 
+  <meta name="description" content="An open source Javascript module which
   manages interactions between users and objects in a free roaming 3D environment.">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes">
@@ -21,11 +21,171 @@
     <div>
       <div class="undoiverse-margin">&nbsp;</div>
       <div>
-        <h1>Undoiverse</h1>
+        <h1 style="margin-bottom:0">Undoiverse</h1>
+        <h4 style="margin-top:0">Draft 3, 26th September 2016</h4>
+
+
+<article class="markdown-body entry-content" itemprop="text">
+
+<h2><a id="contents" class="anchor" href="#contents" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Contents</h2>
+
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#for-example">For Example</a></li>
+<li><a href="#about-loopcoop">About Loop.Coop</a></li>
+<li><a href="#roadmap">Roadmap</a></li>
+</ul>
+
+<h2><a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Introduction</h2>
+
+<p>The dream of virtual worlds has fired our collective imagination for a long
+while. A <a href="https://en.wikipedia.org/wiki/Metaverse">metaverse⤴</a> where people can
+meet, learn, make things and share ideas. Recent web technologies (WebGL, Web
+Audio, WebSockets, WebVR) provide the foundations for immersive 3D experiences
+on the web. At the same time, development platforms like Unity and Unreal make
+it easy to build games that work on mobile, desktop, VR/AR and consoles.</p>
+
+<p>But none of these technologies and platforms address the server-side needs of
+<em>multiuser creative applications</em>.</p>
+
+<p><a href="http://undoiverse.loop.coop">Undoiverse</a> is an open source server-side
+JavaScript module. It allows hundreds of users to create, collaborate and
+communicate in a shared ‘free roaming’ 3D environment. Although you can build
+<a href="https://goo.gl/VJgGdZ">multiplayer VR games⤴</a> with it, Undoiverse is really
+intended for multiuser creative VR experiences - the features it provides will
+be very familiar to anyone who’s used creative applications like Photoshop,
+GarageBand, PowerPoint or SketchUp:</p>
+
+<ul>
+<li>Copy and Paste</li>
+<li>Undo and Redo</li>
+<li>Group and Ungroup</li>
+<li>Lock and Unlock</li>
+<li>Save and Save As</li>
+<li>…and <a href="#vanilla-plugins">so on</a></li>
+</ul>
+
+<h2><a id="for-example" class="anchor" href="#for-example" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>For Example</h2>
+
+<p>Say you want to develop a gamified learning app for young engineers, loosely
+based on <a href="https://goo.gl/zNwChk">Scrapheap Challenge / Junkyard Wars⤴</a>. A dozen
+mechanics in two teams scavenge a giant pile of rusty parts, and race to
+assemble a working car.</p>
+
+<p>First, players sign in to your app and customise their avatars. Then your app
+randomly generates a few thousand car parts and scatters them around the virtual
+junkyard. Next your app creates a new Undoiverse instance and tells it a little
+about each player, avatar and car part.</p>
+
+<p>The game starts, and Undoiverse tracks the locations and attributes of the car
+parts as players collect them, carry them, chop them up and weld them together.</p>
+
+<p>Undoiverse’s main task is to keep players’ devices constantly updated with the
+current state of car parts and avatars in their vicinity. But you can install
+Plugins to extend Undoiverse’s capabilities, letting players send messages to
+each other, undo their mistakes, or search the scrapheap for a particular kind
+of steering wheel.</p>
+
+<p>Just to be clear: Undoiverse only runs on the server, so it can’t help you with
+lighting, physics, 3D rendering or the user interface — your frontend code needs
+to do all that. Your frontend could be an iPhone app, a PlayStation 4 VR game or
+an HTML5 web app. In fact your players can all be using different frontend
+technologies at the same time, linked together via the same server.</p>
+
+
+<h2><a id="about-loopcoop" class="anchor" href="#about-loopcoop" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>About Loop.Coop</h2>
+
+<p>Undoiverse is an open source project by digital tinkerers
+<a href="http://loop.coop/">Loop.Coop</a>.</p>
+
+<h2><a id="roadmap" class="anchor" href="#roadmap" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Roadmap</h2>
+
+<ul>
+<li><p>Change README.md from ‘draft’ to ‘live’ status. This means that the project
+goals, scope and API have been agreed by the team and set in stone.<br>
+V: 0.1.0<br>
+ETA: 20161102  </p></li>
+<li><p>Functional ‘undoiverse.js’ and Core Plugins, passing low-level unit tests.<br>
+Test, build and deploy systems in place.<br>
+Project page at <a href="http://undoiverse.loop.coop/">http://undoiverse.loop.coop/</a> just duplicates this README.<br>
+V: 0.2.0<br>
+ETA: 20161109  </p></li>
+<li><p>‘vanilla/log.js’ able to output to console and/or directly to file.<br>
+‘vanilla/log.js’ formats for raw log-lines, ASCII rendered Locations, lists of
+Clients and Entities, and a summary of current state.<br>
+V: 0.3.0<br>
+ETA: 20161116  </p></li>
+<li><p>Stronger ‘undoiverse.js’ and Core Plugins, passing a decent set of unit tests.
+Unit tests can now test against the output of ‘vanilla/log.js’.<br>
+V: 0.4.0<br>
+ETA: 20161123  </p></li>
+<li><p>Core Usage Examples begun - between them, they should thoroughly cover all
+‘undoiverse.js’ and core plugin code.<br>
+V: 0.5.0<br>
+ETA: 20161130  </p></li>
+<li><p>‘undoiverse.js’ and Core Plugins production-ready, thoroughly tested and
+reasonably well optimised.<br>
+Core Usage Examples well tested on a variety of UAs/platforms.<br>
+V: 0.6.0<br>
+ETA: 20161214  </p></li>
+<li><p>Command Line basically functional, passing a fairly good set of unit tests.<br>
+V: 0.7.0<br>
+ETA: 20161221  </p></li>
+<li><p>Documentation tidy and correct. Complete for ‘undoiverse.js’, Core Plugins,
+‘vanilla/log.js’ and Core Usage Examples. Incomplete (with ‘todos’) for
+Command Line, the planned ‘vanilla/....js’ Plugins, Community Plugins.<br>
+<a href="http://undoiverse.loop.coop/">http://undoiverse.loop.coop/</a> is responsive and properly styled, with a logo.<br>
+V: 1.0.0<br>
+ETA: 20170111  </p></li>
+<li><p>‘Git Archive’ history plugin production-ready.<br>
+V: 1.1.0<br>
+ETA: 20170125  </p></li>
+<li><p>Other history plugins production-ready: Rewind and Playback, Undo and Redo,
+Fork and Merge, Historical Analysis.<br>
+V: 1.2.0<br>
+ETA: 20170208  </p></li>
+<li><p>Query plugins production-ready: Search and Filter, Move and Zoom Viewpoint.<br>
+V: 1.3.0<br>
+ETA: 20170301  </p></li>
+<li><p>Ownership plugins production-ready: Open and Close, Save and Save As,
+Credentials and Permissions, Lock and Unlock.<br>
+V: 1.4.0<br>
+ETA: 20170322  </p></li>
+<li><p>Composition plugins production-ready: Group and Ungroup, Copy, Cut, Paste
+and Duplicate.<br>
+V: 1.5.0<br>
+ETA: 20170412  </p></li>
+<li><p>Communication plugins production-ready: Broadcast and Notifications,
+Conference and Private Messaging.<br>
+V: 1.6.0<br>
+ETA: 20170503  </p></li>
+<li><p>Polish the Command Line experience, with an excellent set of unit tests which
+find problems across a wide range of platforms.<br>
+V: 1.7.0<br>
+ETA: 20170517  </p></li>
+<li><p>Plugin usage examples complete.<br>
+Documentation tidy and correct.<br>
+V: 2.0.0<br>
+ETA: 20170607  </p></li>
+<li><p>Arrive at a conclusion whether major (breaking) API changes are needed to
+‘undoiverse.js’ and the Core and Vanilla Plugins. Ideally not, but if they
+<em>are</em> needed, let’s aim to complete them all by the end of 2017. After that,
+the only modifications to ‘undoiverse.js’ and the Core and Vanilla Plugins
+should be refactoring for compatibility and performance.<br>
+Progress in 2018 and beyond will be made through Community Plugins, better
+examples, better documentation, and so on.<br>
+V: 2.1.0<br>
+ETA: 20170906  </p></li>
+</ul>
+
+<hr>
+
+</article>
+
         <p>
-          <strong>Page under contruction!</strong><br>See the
+          <br>See the
           <a href="https://github.com/loopdotcoop/undoiverse/">GitHub repo</a>
-          for more details. 
+          for more details.
         </p>
       </div>
       <div class="undoiverse-margin">&nbsp;</div>
