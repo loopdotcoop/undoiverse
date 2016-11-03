@@ -10,13 +10,10 @@ Contents
 - [Introduction](#introduction)
 - [How it Works](#how-it-works)
 - [What it Isn’t](#what-it-isnt)
-- [Project Goals](#project-goals)
 - [Getting Started](#getting-started)
 - [Basic Usage](#basic-usage)
-- [Plugin Reference](#plugin-reference)
 - [Advanced Usage](#advanced-usage)
 - [Command Line](#command-line)
-- [About Loop.Coop](#about-loopcoop)
 - [Changelog and Roadmap](#changelog-and-roadmap)
 - [Contributing](#contributing)
 
@@ -42,17 +39,17 @@ communicate in a shared ‘free roaming’ 3D environment. Although you can buil
 [multiplayer VR games⤴](https://goo.gl/VJgGdZ) with it, Undoiverse is really
 intended for multiuser creative VR experiences - the features it provides will
 be very familiar to anyone who’s used creative applications like Photoshop,
-GarageBand, PowerPoint or SketchUp:
+GarageBand, PowerPoint or AutoCAD:
 
 - Copy and Paste
 - Undo and Redo
 - Group and Ungroup
 - Lock and Unlock
 - Save and Save As
-- …and [so on](#vanilla-plugins)
+- …and [so on](#the-standard-plugins)
 
 
-#### For Example
+### For Example
 
 Say you want to develop a gamified learning app for young engineers, loosely
 based on [Scrapheap Challenge / Junkyard Wars⤴](https://goo.gl/zNwChk). A dozen
@@ -61,8 +58,8 @@ assemble a working car.
 
 First, players sign in to your app and customise their avatars. Then your app
 randomly generates a few thousand car parts and scatters them around the virtual
-junkyard. Next your app creates a new Undoiverse instance and tells it a little
-about each player, avatar and car part.
+junkyard. Next your app initialises a new Undoiverse instance and tells it a
+little about each player, avatar and car part.
 
 The game starts, and Undoiverse tracks the locations and attributes of the car
 parts as players collect them, carry them, chop them up and weld them together.
@@ -76,11 +73,25 @@ of steering wheel.
 Just to be clear: Undoiverse only runs on the server, so it can’t help you with
 lighting, physics, 3D rendering or the user interface — your frontend code needs
 to do all that. Your frontend could be an iPhone app, a PlayStation 4 VR game or
-an HTML5 web app. In fact your players can all be using different frontend
+an HTML5 web page. In fact your players can all be using different frontend
 technologies at the same time, linked together via the same server.
 
-[__@todo__ Write a conclusion to the Introduction. Maybe explain what this
-README’s current status is, where to go for more info]
+
+### Project Goals
+
+[__@todo__ Discuss]
+
+
+### About These Docs
+
+This documentation assumes that you are a developer with some experience of 3D
+and JavaScript. You might be starting a new project from scratch, or you might
+have a single-user creative app running already that you’d like to make
+multiuser, and add a Git-based undo/redo system to.
+
+[__@todo__ Write a conclusion to the Introduction. Explain how the docs are
+split into various READMEs, and their current status is. Suggest where to go for
+more info on Node, 3D, JavaScript, hosting, writing client-side apps, etc.]
 
 
 
@@ -88,97 +99,151 @@ README’s current status is, where to go for more info]
 How It Works
 ------------
 
-From here on we’ll assume that you are a developer with some experience of 3D
-and JavaScript. You might be starting a new project from scratch, or you might
-have a single-user creative app running already that you’d like to make
-multiuser, and add a Git-based undo/redo system to.
-
-
-### The Fundamentals
-
 At its most basic level, Undoiverse is designed to __manage the interactions
 between Clients, Entities and Locations in a free roaming multiuser creative
 application.__ By concentrating on one job within a particular kind of app,
 Undoiverse can be kept lean and efficient.
 
-[__@todo__ Describe how Client/Entity/Location work together to give you the
-minimum you need for a collaborative creative 3D app. Mention that Undoiverse
-will work with only these three installed, and describe the experience the
-user would have in an app like that.]
-
-#### What is a ‘Client’?
-
-#### What is an ‘Entity’?
-
-#### What is a ‘Location’?
-
-
-### Keeping It Loosely Coupled
-
 Undoiverse has a loosely coupled, modular architecture. Code is organised into
-groups of [plugins⤴](https://goo.gl/zDyhwb), which talk to each other via
-[hooks⤴](https://goo.gl/wPStU7) and [events⤴](https://goo.gl/QvtIvZ). This
-helps keep code focused, maintainable, and easy to test. It also means that your
-app can add or remove features with the minimum of fuss.
+groups of [plugins⤴](https://goo.gl/zDyhwb), which talk to each other via [events⤴](https://goo.gl/QvtIvZ). This helps keep code focused, maintainable,
+and easy to test. It also means that your app can add features with the minimum
+of fuss.
 
 
-#### The ‘undoiverse.js’ File
+### The Undoiverse Class
 
-The ‘undoiverse.js’ file provides three main services:
+The Undoiverse Class is defined in ‘undoiverse.js’, and provides two main
+services:
 
-1. __Initialisation and Configuration__ — [__@todo__ Describe]
-2. __Plugin Management__ — Allows functionality to be installed as the app
-   starts up, or even while it’s running [__@todo__ Can we also list and remove
-   Plugins? Can we change their config while it’s running?]
-3. __Communication Hub__ — Coordinates the messages sent between your app, your
-   users, and whatever Undoiverse Plugins you have installed
+1. __Initialisation__ — When you call `new Undoiverse()` to create an instance,
+   the `constructor()` processes your configuration object, installs the [Core Plugins](#the-core-plugins), and installs any other plugins that you specify.
+
+2. __Communication__ — As your app runs, the instance coordinates messages sent
+   between your app, your users, and whatever Undoiverse Plugins you installed.
+
+The [Basic Usage](#basic-usage) and [Advanced Usage](#advanced-usage) sections
+below cover most of the Undoiverse Class’s API. The ‘undoiverse.js’ file is well
+commented and fairly easy to understand.
 
 
 #### The Core Plugins
 
-The Core Plugins are [Client](#what-is-a-client), [Entity](#what-is-an-entity)
-and [Location](#what-is-a-location). Undoiverse can’t run without them, so it
-automatically installs them during initialisation.
+The Core Plugins are Client, Entity and Location. Undoiverse can’t run without
+them, so it automatically installs them during initialisation. For full API
+and documentation, see ‘plugins/core/README.md’.
+
+- __Client__ — Your app’s client-side code could be JavaScript running in a
+  browser, C# in a Unity app, or Python compiled to an ‘.exe’ on a PC.
+  Devices running this code talk to your app’s Undoiverse instance (which is
+  running on a server), usually via [WebSockets](goo.gl/xe3ER9). The Client
+  Plugin keeps a record of these Clients while they are connected, and it also
+  keeps track as they shift their attention between Locations.
+
+- __Entity__ — In the [Scrapheap Challenge example](#for-example) above, the
+  scene contains avatars (which each belong to a Client), car parts (of various
+  kinds) and mechanic’s tools (for cutting and joining car parts). The Entity
+  Plugin doesn’t differentiate between any of these kinds of things — it just
+  keeps track of Entities as they’re created, moved from Location to Location,
+  edited, joined, split apart and deleted.
+
+- __Location__ — During initialisation, your configuration object decides how
+  many Locations your app will need, typically between 50 and 1000. The Location
+  Plugin doesn’t care whether these Locations are arranged in a grid, or nested
+  inside each other, or whether they represent places in the real world or not.
+  Each Location is just a simple list which can contain Clients and Entities.
+
+At any one time, your app might have 500 active Clients and a million current
+Entities, spread across a thousand Locations. Assuming your app is left
+permanently running, it might deal with 100,000 Client connections and a couple
+of billion Entities over the course of a year.
+
+[__@todo__ Describe how Client/Entity/Location work together to give you the
+minimum you need for a collaborative creative 3D app. Mention that Undoiverse
+can work with only these three installed, and describe the experience the
+user would have in an app like that.]
 
 
-#### The Vanilla Plugins
+### The Standard Plugins
 
-The Vanilla Plugins are all optional. [__@todo__ Introduce plugins section-by-
-section, explaining how the Scrapheap Challenge game would use each of them.]
+The Standard Plugins are all optional. They’re organised into seven groups:  
+[__@todo__ Explain how the Scrapheap Challenge game would use each of them.]
 
-- Copy, Cut, Paste and Duplicate
-- Group and Ungroup
-- Open and Close
-- Save and Save As
-- Credentials and Permissions
-- Lock and Unlock
-- Search and Filter
-- Move and Zoom Viewpoint
-- Broadcast and Notifications
-- Conference and Private Messaging
+1. __Develop__ — [__@todo__ Describe]
 
-With the ‘Git Archive’ plugin installed in your ‘Scrapheap Challenge’ app,
-Undoiverse permanently records everything that each mechanic does. This allows
-you enable other history-based plugins like:
+   - Alert
+   - Benchmark
+   - Log
+   - Reflect
 
-- Rewind and Playback
-- Undo and Redo
-- Fork and Merge
-- Historical Analysis
+2. __History__ — This group of plugins depend on a Git repo (local, remote or
+   GitHub) which records all events in the virtual environment. Once Git is set
+   up in your ‘Scrapheap Challenge’ app, everything that each mechanic does is
+   permanently archived. This allows you enable the other History group plugins:
 
-So you can use a GitHub repo to rewind and replay the process of building a car,
-or allow mechanics to undo their mistakes.
+   - Historical Analysis
+   - Fork and Merge
+   - Rewind and Playback
+   - Undo and Redo
+
+   So you can use a GitHub repo to rewind and replay the process of building a
+   car, or allow mechanics to undo their mistakes.
+
+3. __Message__ — [__@todo__ Describe]
+
+   - Broadcast
+   - Conference
+   - Notify
+   - Private Message
+
+4. __Own__ — [__@todo__ Describe]
+
+   - Credentials and Permissions
+   - Lock and Unlock
+   - Open and Close
+   - Save and Save As
+
+5. __Persist__ — Various ways of storing Undoiverse’s current state, using the
+   local file system, memory, databases, or remote services.  
+
+6. __Query__ — Some kinds of simple Search and Filter operations are possible
+   with just the Core Plugins installed. But the Query group of plugins really
+   come into their own when the History and Persist groups are enabled.
+
+7. __Wrangle__ — [__@todo__ Describe]
+
+   - Alias and Clone
+   - Carry and Drop
+   - Clipboard — Cut, Copy and Paste
+   - Duplicate
+   - Group and Ungroup
+   - Sever and Join
+
+Full API documentation for the Standard Plugins can be found in their respective
+directories:
+
+1. ‘plugins/develop/README.md’
+2. ‘plugins/history/README.md’
+3. ‘plugins/message/README.md’
+4. ‘plugins/own/README.md’
+5. ‘plugins/persist/README.md’
+6. ‘plugins/query/README.md’
+7. ‘plugins/wrangle/README.md’
 
 
-#### The Community Plugins
+### Boilerplate Plugins
 
-[__@todo__ Describe Undoiverse’s plugin architecture. We intend to cease all
-major API updates to ‘undoiverse.js’ and the Core and Vanilla Plugins by the end
-of 2017 - they’ll only be updated for compatibility and performance after that.
-So progress in 2018 and beyond will be made through Community Plugins.]
+[__@todo__ Give these a quick mention]
+
+
+### Community Plugins
 
 We invite you to contribute your own plugins to the community.  
-[__@todo__ Discuss this in more detail. Need a boilerplate Plugin]
+[__@todo__ Discuss this in more detail]
+
+We intend to cease all major API updates to the Undoiverse Class and the Core
+and Standard Plugins by the end of 2017 — they’ll only be updated for
+compatibility and performance after that. So progress in 2018 and beyond will be
+through Community Plugins.
 
 
 
@@ -203,8 +268,8 @@ between Entities which do not share any locations]
 
 ### Models, Textures and Audio
 
-[__@todo__ Discuss CDN, vs keeping assets in the same Git repo as the History
-Plugin uses. Discuss using payload attributes to modify static assets. Discuss
+[__@todo__ Discuss CDN vs keeping assets in the same Git repo as the History
+plugins use. Discuss using payload attributes to modify static assets. Discuss
 why attributes should only represent vertices for very simple geometries]
 
 
@@ -239,21 +304,6 @@ Basic Usage
 
 ### Instantiation
 
-Usually we think about a Node process running a single Undoiverse instance. But
-two or more Undoiverse instances can happily coexist:  
-```js
-const lumpySpace = require('undoiverse')();
-const candyKingdom = require('undoiverse')();
-```
-
-Above, we’ve instantiated without passing any configuration. That’s the same as
-instantiating with the following defaults:  
-```js
-const lumpySpace = require('undoiverse')({
-    //@todo add a listing of all default config
-});
-```
-
 
 ### Events
 
@@ -271,75 +321,6 @@ const lumpySpace = require('undoiverse')({
 
 Undoiverse is optimised to run under Node on a server, but it can also be made
 to run in a browser. [__@todo__ Discuss]
-
-
-
-
-Plugin Reference
-----------------
-
-
-### Core Plugin API
-
-#### Client
-
-#### Entity
-
-#### Location
-
-
-### Persistence Plugin API
-
-#### File System
-
-#### Database
-
-#### Meteor Integration
-
-
-### History Plugin API
-
-#### Git Archive
-
-#### Rewind and Playback
-
-#### Undo and Redo
-
-#### Fork and Merge
-
-#### Historical Analysis
-
-
-### Query Plugin API
-
-#### Search and Filter
-
-#### Move and Zoom Viewpoint
-
-
-### Ownership Plugin API
-
-#### Open and Close
-
-#### Save and Save As
-
-#### Credentials and Permissions
-
-#### Lock and Unlock
-
-
-### Composition Plugin API
-
-#### Group and Ungroup
-
-#### Copy, Cut, Paste and Duplicate
-
-
-### Communication Plugin API
-
-#### Broadcast and Notifications
-
-#### Conference and Private Messaging
 
 
 
@@ -390,15 +371,6 @@ AWS, Azure, etc]
 
 
 
-About Loop.Coop
----------------
-
-Undoiverse is an open source project by digital tinkerers
-[Loop.Coop](http://loop.coop/).
-
-
-
-
 Changelog and Roadmap
 ---------------------
 
@@ -421,40 +393,43 @@ the ‘ATA’ date matches or beats the ‘ETA’ date, then we’re winning!
 
 - README.md third draft.  
   V: 0.0.3  
-  ETA: 20161026
+  ETA: 20161026  
   ATA: 20161026
+
+- Change README.md from ‘draft’ to ‘live’ status. This means that the basic API
+  and architecture, and the project goals and scope have been agreed by the team
+  and set in stone.  
+  V: 0.1.0  
+  ETA: 20161102  
+  ATA: 20161103
 
 
 ### Roadmap
 
-- Change README.md from ‘draft’ to ‘live’ status. This means that the project
-  goals, scope and API have been agreed by the team and set in stone.  
-  V: 0.1.0  
-  ETA: 20161102  
-
-- Functional ‘undoiverse.js’ and Core Plugins, passing low-level unit tests.  
+- Initial directory structure in place.  
+  Functional Undoiverse Class and Core Plugins, passing low-level unit tests.  
   Test, build and deploy systems in place.  
   Project page at http://undoiverse.loop.coop/ just duplicates this README.  
   V: 0.2.0  
   ETA: 20161109  
 
-- ‘vanilla/log.js’ able to output to console and/or directly to file.  
-  ‘vanilla/log.js’ formats for raw log-lines, ASCII rendered Locations, lists of
-  Clients and Entities, and a summary of current state.  
+- ‘plugins/develop/log.js’ able to output to console and/or directly to file.  
+  ‘plugins/develop/log.js’ formats for raw log-lines, ASCII rendered Locations,
+  lists of Clients and Entities, and a summary of current state.  
   V: 0.3.0  
   ETA: 20161116  
 
-- Stronger ‘undoiverse.js’ and Core Plugins, passing a decent set of unit tests.
-  Unit tests can now test against the output of ‘vanilla/log.js’.  
+- Stronger Undoiverse Class and Core Plugins, passing a decent set of unit
+  tests. Unit tests now test against the output of ‘plugins/develop/log.js’.  
   V: 0.4.0  
   ETA: 20161123  
 
 - Core Usage Examples begun - between them, they should thoroughly cover all
-  ‘undoiverse.js’ and core plugin code.  
+  Undoiverse Class and Core Plugin code.  
   V: 0.5.0  
   ETA: 20161130  
 
-- ‘undoiverse.js’ and Core Plugins production-ready, thoroughly tested and
+- Undoiverse Class and Core Plugins production-ready, thoroughly tested and
   reasonably well optimised.  
   Core Usage Examples well tested on a variety of UAs/platforms.  
   V: 0.6.0  
@@ -464,9 +439,9 @@ the ‘ATA’ date matches or beats the ‘ETA’ date, then we’re winning!
   V: 0.7.0  
   ETA: 20161221  
 
-- Documentation tidy and correct. Complete for ‘undoiverse.js’, Core Plugins,
-  ‘vanilla/log.js’ and Core Usage Examples. Incomplete (with ‘todos’) for
-  Command Line, the planned ‘vanilla/....js’ Plugins, Community Plugins.  
+- Documentation tidy and correct. Complete for Undoiverse Class, Core Plugins,
+  ‘plugins/develop/log.js’ and Core Usage Examples. Incomplete (with ‘@todos’)
+  for Command Line, the remaining Standard Plugins, Community Plugins.  
   http://undoiverse.loop.coop/ is responsive and properly styled, with a logo.  
   V: 1.0.0  
   ETA: 20170111  
@@ -509,11 +484,11 @@ the ‘ATA’ date matches or beats the ‘ETA’ date, then we’re winning!
   V: 2.0.0  
   ETA: 20170607  
 
-- Arrive at a conclusion whether major (breaking) API changes are needed to
-  ‘undoiverse.js’ and the Core and Vanilla Plugins. Ideally not, but if they
+- Arrive at a conclusion whether major (breaking) API changes are needed to the
+  Undoiverse Class and the Core and Standard Plugins. Ideally not, but if they
   _are_ needed, let’s aim to complete them all by the end of 2017. After that,
-  the only modifications to ‘undoiverse.js’ and the Core and Vanilla Plugins
-  should be refactoring for compatibility and performance.  
+  the only modifications to the Undoiverse Class and the Core and Standard
+  Plugins should be refactoring for compatibility and performance.  
   Progress in 2018 and beyond will be made through Community Plugins, better
   examples, better documentation, and so on.  
   V: 2.1.0  
@@ -525,11 +500,14 @@ the ‘ATA’ date matches or beats the ‘ETA’ date, then we’re winning!
 Contributing
 ------------
 
-[__@todo__ Explain how developers can contribute to ‘undoiverse.js’ and the Core
-and Vanilla Plugins. Also explain how developers can build their own Community
-Plugins, and make them available to other Undoiverse devs.]
+Undoiverse is an open source project by digital tinkerers
+[Loop.Coop](http://loop.coop/).
+
+[__@todo__ Explain how developers can contribute to Undoiverse Class and the
+Core and Standard Plugins. Also explain how developers can build their own
+Community Plugins, and make them available to other Undoiverse devs.]
 
 
 ---
 
-#### README draft 3, 26th September 2016
+#### README last modified 3rd November 2016
