@@ -235,13 +235,13 @@ The Standard Plugins are all optional. They’re organised into seven groups:
 Full API documentation for the Standard Plugins can be found in their respective
 directories:
 
-1. [plugins/corral/README.md](./tree/master/plugins/corral)
-2. [plugins/develop/README.md](./tree/master/plugins/develop)
-3. [plugins/history/README.md](./tree/master/plugins/history)
-4. [plugins/message/README.md](./tree/master/plugins/message)
-5. [plugins/own/README.md](./tree/master/plugins/own)
-6. [plugins/persist/README.md](./tree/master/plugins/persist)
-7. [plugins/query/README.md](./tree/master/plugins/query)
+1. [plugins/corral/README.md](https://github.com/loopdotcoop/undoiverse/tree/master/plugins/corral)
+2. [plugins/develop/README.md](https://github.com/loopdotcoop/undoiverse/tree/master/plugins/develop)
+3. [plugins/history/README.md](https://github.com/loopdotcoop/undoiverse/tree/master/plugins/history)
+4. [plugins/message/README.md](https://github.com/loopdotcoop/undoiverse/tree/master/plugins/message)
+5. [plugins/own/README.md](https://github.com/loopdotcoop/undoiverse/tree/master/plugins/own)
+6. [plugins/persist/README.md](https://github.com/loopdotcoop/undoiverse/tree/master/plugins/persist)
+7. [plugins/query/README.md](https://github.com/loopdotcoop/undoiverse/tree/master/plugins/query)
 
 
 ### Boilerplate Plugins
