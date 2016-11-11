@@ -3,7 +3,7 @@ Undoiverse
 
 
 
-
+--------
 Contents
 --------
 
@@ -19,7 +19,7 @@ Contents
 
 
 
-
+------------
 Introduction
 ------------
 
@@ -33,7 +33,7 @@ it easy to build games that work on mobile, desktop, VR/AR and consoles.
 But none of these technologies and platforms address the server-side needs of
 _multiuser creative applications_.
 
-[Undoiverse](http://undoiverse.loop.coop) is an open source server-side
+[Undoiverse⤴](http://undoiverse.loop.coop) is an open source server-side
 JavaScript module. It allows hundreds of users to create, collaborate and
 communicate in a shared ‘free roaming’ 3D environment. Although you can build
 [multiplayer VR games⤴](https://goo.gl/VJgGdZ) with it, Undoiverse is really
@@ -95,7 +95,7 @@ more info on Node, 3D, JavaScript, hosting, writing client-side apps, etc.]
 
 
 
-
+------------
 How It Works
 ------------
 
@@ -116,26 +116,26 @@ The Undoiverse Class is defined in ‘undoiverse.js’, and provides two main
 services:
 
 1. __Initialisation__ — When you call `new Undoiverse()` to create an instance,
-   the `constructor()` processes your configuration object, installs the [Core Plugins](#the-core-plugins), and installs any other plugins that you specify.
+   the `constructor()` processes your configuration object, activates the [Core Plugins](#the-core-plugins) and activates any other plugins that you specify.
 
 2. __Communication__ — As your app runs, the instance coordinates messages sent
-   between your app, your users, and whatever Undoiverse Plugins you installed.
+   between your app, your users, and whatever Undoiverse Plugins you activated.
 
 The [Basic Usage](#basic-usage) and [Advanced Usage](#advanced-usage) sections
 below cover most of the Undoiverse Class’s API. The ‘undoiverse.js’ file is well
 commented and fairly easy to understand.
 
 
-#### The Core Plugins
+### The Core Plugins
 
 The Core Plugins are Client, Entity and Location. Undoiverse can’t run without
-them, so it automatically installs them during initialisation. For full API
+them, so it automatically activates them during initialisation. For full API
 and documentation, see ‘plugins/core/README.md’.
 
 - __Client__ — Your app’s client-side code could be JavaScript running in a
   browser, C# in a Unity app, or Python compiled to an ‘.exe’ on a PC.
   Devices running this code talk to your app’s Undoiverse instance (which is
-  running on a server), usually via [WebSockets](goo.gl/xe3ER9). The Client
+  running on a server), usually via [WebSockets⤴](goo.gl/xe3ER9). The Client
   Plugin keeps a record of these Clients while they are connected, and it also
   keeps track as they shift their attention between Locations.
 
@@ -159,7 +159,7 @@ of billion Entities over the course of a year.
 
 [__@todo__ Describe how Client/Entity/Location work together to give you the
 minimum you need for a collaborative creative 3D app. Mention that Undoiverse
-can work with only these three installed, and describe the experience the
+can work with only these three activated, and describe the experience the
 user would have in an app like that.]
 
 
@@ -168,66 +168,80 @@ user would have in an app like that.]
 The Standard Plugins are all optional. They’re organised into seven groups:  
 [__@todo__ Explain how the Scrapheap Challenge game would use each of them.]
 
-1. __Develop__ — [__@todo__ Describe]
+1. __Corral__ — [__@todo__ Describe]
 
-   - Alert
-   - Benchmark
-   - Log
-   - Reflect
+   - Alias, for Entities which share some attributes with other Entities
+   - Clipboard, for cut, copy and paste
+   - Clone, for Entities which start with attributes copied from other Entities
+   - Group, (and ungroup) for using an Entity to contain other Entities
+   - Repeat, to run an earlier Entity operation a second time
+   - Unite, (and sever) for combining two or more Entities into a single Entity
 
-2. __History__ — This group of plugins depend on a Git repo (local, remote or
+2. __Develop__ — [__@todo__ Describe]
+
+   - Alert, a channel for auto-sending messages to developers and admins
+   - Benchmark, for measuring, recording, analysing and improving performance
+   - Log, various kinds of text output
+   - Reflect, to help developers understand current app state
+
+3. __History__ — This group of plugins depend on a Git repo (local, remote or
    GitHub) which records all events in the virtual environment. Once Git is set
    up in your ‘Scrapheap Challenge’ app, everything that each mechanic does is
    permanently archived. This allows you enable the other History group plugins:
 
-   - Historical Analysis
-   - Fork and Merge
-   - Rewind and Playback
-   - Undo and Redo
+   - Branch, for forking and Merging (creating and combining Git branches)
+   - Git, to use a local or remote Git repo
+   - GitHub, to use a private or public GitHub repo
+   - Scrub, for rewind and playback of history-state
+   - Traverse, for undo, redo, revert or jumping to arbitrary points in history
 
    So you can use a GitHub repo to rewind and replay the process of building a
    car, or allow mechanics to undo their mistakes.
 
-3. __Message__ — [__@todo__ Describe]
+4. __Message__ — [__@todo__ Describe]
 
-   - Broadcast
-   - Conference
-   - Notify
-   - Private Message
+   - Ask, allows the app to retrieve data from Clients
+   - Broadcast, for sending messages to all Clients
+   - Conference, to let two or more Clients communicate with each other
+   - Notify, for sending messages to one Client
 
-4. __Own__ — [__@todo__ Describe]
+5. __Own__ — [__@todo__ Describe]
 
-   - Credentials and Permissions
-   - Lock and Unlock
-   - Open and Close
-   - Save and Save As
+   - Allow, for defining credentials and permissions
+   - Hide, (and show) to prevent an Entity from being seen
+   - Lock, (and unlock) to prevent an Entity from being modified
+   - Open, (and close) to open an Entity in read-only or read/write mode
+   - Save, and save-as, to create named a snapshot of Entity state
 
-5. __Persist__ — Various ways of storing Undoiverse’s current state, using the
+6. __Persist__ — Various ways of storing Undoiverse’s current state, using the
    local file system, memory, databases, or remote services.  
 
-6. __Query__ — Some kinds of simple Search and Filter operations are possible
-   with just the Core Plugins installed. But the Query group of plugins really
+   - Mongo, for the [MongoDB](https://www.mongodb.com/) document store
+   - Csv, for persisting to a set of comma-separated-value files
+   - Keyval, for key-value stores like [Redis](http://redis.io/)
+   - Memory, for persisting to a simple in-memory JavaScript object
+   - Sql, for relational DBMS’s like [MySQL](https://mysql.com/)
+
+7. __Query__ — Some kinds of simple search and filter operations are possible
+   with just the Core Plugins activated. But the Query group of plugins really
    come into their own when the History and Persist groups are enabled.
 
-7. __Wrangle__ — [__@todo__ Describe]
-
-   - Alias and Clone
-   - Carry and Drop
-   - Clipboard — Cut, Copy and Paste
-   - Duplicate
-   - Group and Ungroup
-   - Sever and Join
+   - Count, to count the number of Elements which match the search terms
+   - Find, to list Elements which match the search terms
+   - Stats, for analysis of the current or historical data set
+   - Validator, for diagnosing problems with the data set
+   - Watcher, for subscribing to changes to the data set
 
 Full API documentation for the Standard Plugins can be found in their respective
 directories:
 
-1. ‘plugins/develop/README.md’
-2. ‘plugins/history/README.md’
-3. ‘plugins/message/README.md’
-4. ‘plugins/own/README.md’
-5. ‘plugins/persist/README.md’
-6. ‘plugins/query/README.md’
-7. ‘plugins/wrangle/README.md’
+1. [plugins/corral/README.md](./tree/master/plugins/corral)
+2. [plugins/develop/README.md](./tree/master/plugins/develop)
+3. [plugins/history/README.md](./tree/master/plugins/history)
+4. [plugins/message/README.md](./tree/master/plugins/message)
+5. [plugins/own/README.md](./tree/master/plugins/own)
+6. [plugins/persist/README.md](./tree/master/plugins/persist)
+7. [plugins/query/README.md](./tree/master/plugins/query)
 
 
 ### Boilerplate Plugins
@@ -247,7 +261,7 @@ through Community Plugins.
 
 
 
-
+-------------
 What it Isn’t
 -------------
 
@@ -274,7 +288,7 @@ why attributes should only represent vertices for very simple geometries]
 
 
 
-
+-------------
 Project Goals
 -------------
 
@@ -282,7 +296,7 @@ Project Goals
 
 
 
-
+---------------
 Getting Started
 ---------------
 
@@ -296,8 +310,19 @@ Getting Started
 ### Installing the Command Line Tool
 
 
+### Running on your local machine
 
 
+### Running on a remote server
+
+[__@todo__ Describe how to monitor and control a Node process running an
+Undoiverse instance on a remote server, eg via SSH. Also, an Undoiverse instance
+running in a browser, via the JavaScript console.]
+
+
+
+
+-----------
 Basic Usage
 -----------
 
@@ -324,7 +349,7 @@ to run in a browser. [__@todo__ Discuss]
 
 
 
-
+--------------
 Advanced Usage
 --------------
 
@@ -342,16 +367,14 @@ Advanced Usage
 
 
 
-
+------------
 Command Line
 ------------
 
-[__@todo__ Describe how to monitor and control a Node process running an
-Undoiverse instance on a remote server, eg via SSH. Also, an Undoiverse instance
-running in a browser, via the JavaScript console.]
+### Development Commands
 
 
-### Deployment
+### Deployment Commands
 
 
 #### Deploy to Your Own Server
@@ -370,7 +393,7 @@ AWS, Azure, etc]
 
 
 
-
+---------------------
 Changelog and Roadmap
 ---------------------
 
@@ -403,31 +426,33 @@ the ‘ATA’ date matches or beats the ‘ETA’ date, then we’re winning!
   ETA: 20161102  
   ATA: 20161103
 
-
-### Roadmap
-
 - Initial directory structure in place.  
   Functional Undoiverse Class and Core Plugins, passing low-level unit tests.  
-  Test, build and deploy systems in place.  
+  Basic test system for the Undoiverse project in place (we’re getting on fine
+  without any build or deploy systems, so far).  
   Project page at http://undoiverse.loop.coop/ just duplicates this README.  
   V: 0.2.0  
   ETA: 20161109  
+  ATA: 20161110
 
-- ‘plugins/develop/log.js’ able to output to console and/or directly to file.  
-  ‘plugins/develop/log.js’ formats for raw log-lines, ASCII rendered Locations,
+
+### Roadmap
+
+- ‘plugins/develop/log’ able to output to console and/or directly to file.  
+  ‘plugins/develop/log’ formats for raw log-lines, ASCII rendered Locations,
   lists of Clients and Entities, and a summary of current state.  
   V: 0.3.0  
-  ETA: 20161116  
+  ETA: 20161123  
 
 - Stronger Undoiverse Class and Core Plugins, passing a decent set of unit
-  tests. Unit tests now test against the output of ‘plugins/develop/log.js’.  
+  tests. Unit tests now test against the output of ‘plugins/develop/log’.  
   V: 0.4.0  
-  ETA: 20161123  
+  ETA: 20161130  
 
 - Core Usage Examples begun - between them, they should thoroughly cover all
   Undoiverse Class and Core Plugin code.  
   V: 0.5.0  
-  ETA: 20161130  
+  ETA: 20161207  
 
 - Undoiverse Class and Core Plugins production-ready, thoroughly tested and
   reasonably well optimised.  
@@ -440,7 +465,7 @@ the ‘ATA’ date matches or beats the ‘ETA’ date, then we’re winning!
   ETA: 20161221  
 
 - Documentation tidy and correct. Complete for Undoiverse Class, Core Plugins,
-  ‘plugins/develop/log.js’ and Core Usage Examples. Incomplete (with ‘@todos’)
+  ‘plugins/develop/log’ and Core Usage Examples. Incomplete (with ‘@todos’)
   for Command Line, the remaining Standard Plugins, Community Plugins.  
   http://undoiverse.loop.coop/ is responsive and properly styled, with a logo.  
   V: 1.0.0  
@@ -496,12 +521,12 @@ the ‘ATA’ date matches or beats the ‘ETA’ date, then we’re winning!
 
 
 
-
+------------
 Contributing
 ------------
 
 Undoiverse is an open source project by digital tinkerers
-[Loop.Coop](http://loop.coop/).
+[Loop.Coop⤴](http://loop.coop/).
 
 [__@todo__ Explain how developers can contribute to Undoiverse Class and the
 Core and Standard Plugins. Also explain how developers can build their own
@@ -510,4 +535,4 @@ Community Plugins, and make them available to other Undoiverse devs.]
 
 ---
 
-#### README last modified 3rd November 2016
+#### README last modified 10th November 2016
