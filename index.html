@@ -22,7 +22,7 @@
       <div class="undoiverse-margin">&nbsp;</div>
       <div>
         <h1 style="margin-bottom:0">Undoiverse</h1>
-        <h4 style="margin-top:0">Last modified 3rd November 2016</h4>
+        <h4 style="margin-top:0">Last modified 10th November 2016</h4>
 
 
 <article class="markdown-body entry-content" itemprop="text">
@@ -48,7 +48,7 @@ it easy to build games that work on mobile, desktop, VR/AR and consoles.</p>
 <p>But none of these technologies and platforms address the server-side needs of
 <em>multiuser creative applications</em>.</p>
 
-<p><a href="http://undoiverse.loop.coop">Undoiverse</a> is an open source server-side
+<p><a href="http://undoiverse.loop.coop">Undoiverse⤴</a> is an open source server-side
 JavaScript module. It allows hundreds of users to create, collaborate and
 communicate in a shared ‘free roaming’ 3D environment. Although you can build
 <a href="https://goo.gl/VJgGdZ">multiplayer VR games⤴</a> with it, Undoiverse is really
@@ -65,7 +65,7 @@ GarageBand, PowerPoint or AutoCAD:</p>
 <li>…and <a href="https://github.com/loopdotcoop/undoiverse/#the-standard-plugins">so on⤴</a></li>
 </ul>
 
-<h2><a id="for-example" class="anchor" href="#for-example" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>For Example</h2>
+<h3><a id="for-example" class="anchor" href="#for-example" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>For Example</h3>
 
 <p>Say you want to develop a gamified learning app for young engineers, loosely
 based on <a href="https://goo.gl/zNwChk">Scrapheap Challenge / Junkyard Wars⤴</a>. A dozen
@@ -96,25 +96,19 @@ technologies at the same time, linked together via the same server.</p>
 <h2><a id="roadmap" class="anchor" href="#roadmap" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Roadmap</h2>
 
 <ul>
-<li><p>Initial directory structure in place.<br>
-Functional Undoiverse Class and Core Plugins, passing low-level unit tests.<br>
-Test, build and deploy systems in place.<br>
-Project page at <a href="http://undoiverse.loop.coop/">http://undoiverse.loop.coop/</a> just duplicates this README.<br>
-V: 0.2.0<br>
-ETA: 20161109  </p></li>
-<li><p>‘plugins/develop/log.js’ able to output to console and/or directly to file.<br>
-‘plugins/develop/log.js’ formats for raw log-lines, ASCII rendered Locations,
+<li><p>‘plugins/develop/log’ able to output to console and/or directly to file.<br>
+‘plugins/develop/log’ formats for raw log-lines, ASCII rendered Locations,
 lists of Clients and Entities, and a summary of current state.<br>
 V: 0.3.0<br>
-ETA: 20161116  </p></li>
-<li><p>Stronger Undoiverse Class and Core Plugins, passing a decent set of unit
-tests. Unit tests now test against the output of ‘plugins/develop/log.js’.<br>
-V: 0.4.0<br>
 ETA: 20161123  </p></li>
+<li><p>Stronger Undoiverse Class and Core Plugins, passing a decent set of unit
+tests. Unit tests now test against the output of ‘plugins/develop/log’.<br>
+V: 0.4.0<br>
+ETA: 20161130  </p></li>
 <li><p>Core Usage Examples begun - between them, they should thoroughly cover all
 Undoiverse Class and Core Plugin code.<br>
 V: 0.5.0<br>
-ETA: 20161130  </p></li>
+ETA: 20161207  </p></li>
 <li><p>Undoiverse Class and Core Plugins production-ready, thoroughly tested and
 reasonably well optimised.<br>
 Core Usage Examples well tested on a variety of UAs/platforms.<br>
@@ -124,7 +118,7 @@ ETA: 20161214  </p></li>
 V: 0.7.0<br>
 ETA: 20161221  </p></li>
 <li><p>Documentation tidy and correct. Complete for Undoiverse Class, Core Plugins,
-‘plugins/develop/log.js’ and Core Usage Examples. Incomplete (with ‘@todos’)
+‘plugins/develop/log’ and Core Usage Examples. Incomplete (with ‘@todos’)
 for Command Line, the remaining Standard Plugins, Community Plugins.<br>
 <a href="http://undoiverse.loop.coop/">http://undoiverse.loop.coop/</a> is responsive and properly styled, with a logo.<br>
 V: 1.0.0<br>
