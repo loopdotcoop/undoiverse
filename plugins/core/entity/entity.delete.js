@@ -1,5 +1,5 @@
 const FILE = 'plugins/core/entity/entity.delete.js'
-    , VERSION = '0.2.0'
+    , VERSION = '0.2.2'
     , PLUGIN = 'entity'
     , uu = require('../../../uu.js') // Undoiverse Utilities
 ;

@@ -1,5 +1,5 @@
 const FILE = 'plugins/core/entity/entity.activate.js'
-    , VERSION = '0.2.0'
+    , VERSION = '0.2.2'
     , PLUGIN = 'entity'
     , uu = require('../../../uu.js') // Undoiverse Utilities
 ;
@@ -21,6 +21,7 @@ module.exports = config => {
 
   //// Load methods and properties.
   ppos.push( require('./entity.add.js')(config) );
+  ppos.push( require('./entity.browse.js')(config) );
   ppos.push( require('./entity.delete.js')(config) );
   ppos.push( require('./entity.edit.js')(config) );
   ppos.push( require('./entity.move.js')(config) );

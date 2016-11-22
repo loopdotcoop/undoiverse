@@ -1,5 +1,5 @@
 const FILE = 'tests/core/location/location.test.js'
-    , VERSION = '0.2.0'
+    , VERSION = '0.2.2'
     , PLUGIN = 'location'
     , a = require('assert')
 ;
@@ -21,7 +21,7 @@ module.exports = config => {
       a.strictEqual(uvse.location.FILE,
         'plugins/core/location/location.activate.js',
         `location.FILE has an unexpected value`);
-      a.strictEqual(uvse.location.VERSION, '0.2.0',
+      a.strictEqual(uvse.location.VERSION, '0.2.2',
         `location.VERSION has an unexpected value`);
     },
 

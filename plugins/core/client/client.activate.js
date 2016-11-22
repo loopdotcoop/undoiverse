@@ -1,5 +1,5 @@
 const FILE = 'plugins/core/client/client.activate.js'
-    , VERSION = '0.2.0'
+    , VERSION = '0.2.2'
     , PLUGIN = 'client'
     , uu = require('../../../uu.js') // Undoiverse Utilities
 ;
@@ -21,6 +21,7 @@ module.exports = config => {
 
   //// Load methods and properties.
   ppos.push( require('./client.add.js')(config) );
+  ppos.push( require('./client.browse.js')(config) );
   ppos.push( require('./client.delete.js')(config) );
   ppos.push( require('./client.move.js')(config) );
   ppos.push( require('./client.properties.js')(config) );

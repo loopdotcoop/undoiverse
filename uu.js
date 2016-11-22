@@ -1,10 +1,65 @@
 const FILE = 'uu.js'
-    , VERSION = '0.2.0'
+    , VERSION = '0.2.2'
 ;
 
 //// To load the Undoiverse Utilities, call:
 //// `const uu = require('./uu.js');`
 const uu = module.exports = {
+
+  //// `box('Optional Title', 'Optional Footer', 24, ['1st.','2nd'], 0)`
+  //// Used by `validate()` to make any kind of variable safe for logging.
+  box: (title, footer, width, lines=[], padding=1) => {
+
+    //// Fix arguments and declare variables.
+    title = ''+title, footer = ''+footer;
+    width = 9 <= ~~width ? ~~width : 16;
+    padding = 0 <= ~~padding ? ~~padding : 1;
+    padding = Math.min(padding, Math.floor(width / 2 - 3));
+    let len, w, half, i, line;
+
+    //// Render the title-line.
+    len = title.length;
+    w = width - len - 6;
+    title = ( width - 6 >= len ? title : title.slice(0, w - 3) + '...' );
+    half = ( width - 4 - (title ? title.length : 0) ) / 2;
+    const out = [
+      '.'
+     +'-'.repeat( Math.ceil(half) )
+     +(title ? ' '+title+' ' : '--')
+     +'-'.repeat( Math.floor(half) )
+     +'.'
+    ];
+
+    //// Render each line of content.
+    w = width - 2 - padding - padding;
+    for (i=0, line; line=lines[i]; i++) {
+      len = line.length;
+      out.push(
+        '|'
+       +' '.repeat(padding)
+       +( w >= len ? line + ' '.repeat(w - len) : line.slice(0, w - 3) + '...' )
+       +' '.repeat(padding)
+       +'|'
+      );
+    };
+
+    //// Render the footer-line.
+    len = footer.length;
+    w = width - len - 6;
+    footer = ( width - 6 >= len ? footer : footer.slice(0, w - 3) + '...' );
+    half = ( width - 4 - (footer ? footer.length : 0) ) / 2;
+    out.push(
+      "'"
+     +'='.repeat( Math.ceil(half) )
+     +(footer ? ' '+footer+' ' : '==')
+     +'='.repeat( Math.floor(half) )
+     +"'"
+    );
+
+    //// Convert the output-array to a string.
+    return out.join('\n');
+  },
+
 
   //// `fill('foo/bar.js', config, 'foo.bar', 6, 'integer', 1, 99, testFn)`
   //// If `key` is missing, `fill()` creates it with default value `fallback`.

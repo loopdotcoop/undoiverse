@@ -1,5 +1,5 @@
 const FILE = 'tests/core/entity/entity.test.js'
-    , VERSION = '0.2.0'
+    , VERSION = '0.2.2'
     , PLUGIN = 'entity'
     , a = require('assert')
 ;
@@ -20,7 +20,7 @@ module.exports = config => {
     uvse => {
       a.strictEqual(uvse.entity.FILE, 'plugins/core/entity/entity.activate.js',
         `entity.FILE has an unexpected value`);
-      a.strictEqual(uvse.entity.VERSION, '0.2.0',
+      a.strictEqual(uvse.entity.VERSION, '0.2.2',
         `entity.VERSION has an unexpected value`);
     },
 
@@ -36,15 +36,31 @@ module.exports = config => {
 
     //// After adding one entity.
     uvse => {
-      //@todo
+      let client = { emit:()=>{} };
+      uvse.client.add(client, '1bC', [0]);
+      uvse.entity.add(client, '2dE', [0,1,2]);
+      a.deepStrictEqual(uvse.entity.locations, { e0:[0,1,2] },
+        `entity.locations should contain an entity after entity.add()`);
+      a.strictEqual(uvse.entity.tally, 1,
+        `entity.tally should be 1 after entity.add()`);
+      a.strictEqual(uvse.entity.all, 1,
+        `entity.all should be 1 after entity.add()`);
+      let response = uvse.entity.browse(client, '3fG', { format:'ascii'});
+      a.strictEqual('\n'+response.entities, `
+.----- 1 Entity -----.
+| e0  3              |
+'=== 0 to Infinity =='`,
+        `entity.browse(... { format:'ascii'}) should return a single-row box`);
     },
 
   ];
 
   //// The remaining tests are for the Entity Plugin’s methods.
   // tests.push( require('./entity.add.test.js')(config) );
-  // tests.push( require('./entity.move.test.js')(config) );
+  // tests.push( require('./entity.browse.test.js')(config) );
   // tests.push( require('./entity.delete.test.js')(config) );
+  // tests.push( require('./entity.edit.test.js')(config) );
+  // tests.push( require('./entity.move.test.js')(config) );
 
   ////
   tests.mock = new (require('../../../undoiverse.js'))({

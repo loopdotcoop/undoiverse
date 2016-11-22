@@ -1,5 +1,5 @@
 const FILE = 'tests/core/client/client.test.js'
-    , VERSION = '0.2.0'
+    , VERSION = '0.2.2'
     , PLUGIN = 'client'
     , a = require('assert')
 ;
@@ -20,7 +20,7 @@ module.exports = config => {
     uvse => {
       a.strictEqual(uvse.client.FILE, 'plugins/core/client/client.activate.js',
         `client.FILE has an unexpected value`);
-      a.strictEqual(uvse.client.VERSION, '0.2.0',
+      a.strictEqual(uvse.client.VERSION, '0.2.2',
         `client.VERSION has an unexpected value`);
     },
 
@@ -38,7 +38,8 @@ module.exports = config => {
 
     //// After adding one client.
     uvse => {
-      uvse.client.add({ emit:()=>{} }, '1bC', [0,1,2]);
+      let client = { emit:()=>{} };
+      uvse.client.add(client, '1bC', [0,1,2]);
       a.deepStrictEqual(uvse.client.locations, { c0:[0,1,2] },
         `client.locations should contain a client after client.add()`);
       a.strictEqual(uvse.client.refs.c0.uvseID, 'c0',
@@ -47,14 +48,21 @@ module.exports = config => {
         `client.tally should be 1 after client.add()`);
       a.strictEqual(uvse.client.all, 1,
         `client.all should be 1 after client.add()`);
+      let response = uvse.client.browse(client, '2De', { format:'ascii'});
+      a.strictEqual('\n'+response.clients, `
+.----- 1 Client -----.
+| c0  3              |
+'=== 0 to Infinity =='`,
+        `client.browse(... { format:'ascii'}) should return a single-row box`);
     },
 
   ];
 
   //// The remaining tests are for the Client Plugin’s methods.
   // tests.push( require('./client.add.test.js')(config) );
-  // tests.push( require('./client.move.test.js')(config) );
+  // tests.push( require('./client.browse.test.js')(config) );
   // tests.push( require('./client.delete.test.js')(config) );
+  // tests.push( require('./client.move.test.js')(config) );
 
   ////
   tests.mock = new (require('../../../undoiverse.js'))({

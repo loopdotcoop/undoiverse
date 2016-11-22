@@ -130,7 +130,8 @@ commented and fairly easy to understand.
 
 The Core Plugins are Client, Entity and Location. Undoiverse can’t run without
 them, so it automatically activates them during initialisation. For full API
-and documentation, see ‘plugins/core/README.md’.
+and documentation, see [plugins/core/README.md](
+https://github.com/loopdotcoop/undoiverse/tree/master/plugins/core).
 
 - __Client__ — Your app’s client-side code could be JavaScript running in a
   browser, C# in a Unity app, or Python compiled to an ‘.exe’ on a PC.
@@ -235,13 +236,20 @@ The Standard Plugins are all optional. They’re organised into seven groups:
 Full API documentation for the Standard Plugins can be found in their respective
 directories:
 
-1. [plugins/corral/README.md](https://github.com/loopdotcoop/undoiverse/tree/master/plugins/corral)
-2. [plugins/develop/README.md](https://github.com/loopdotcoop/undoiverse/tree/master/plugins/develop)
-3. [plugins/history/README.md](https://github.com/loopdotcoop/undoiverse/tree/master/plugins/history)
-4. [plugins/message/README.md](https://github.com/loopdotcoop/undoiverse/tree/master/plugins/message)
-5. [plugins/own/README.md](https://github.com/loopdotcoop/undoiverse/tree/master/plugins/own)
-6. [plugins/persist/README.md](https://github.com/loopdotcoop/undoiverse/tree/master/plugins/persist)
-7. [plugins/query/README.md](https://github.com/loopdotcoop/undoiverse/tree/master/plugins/query)
+1. [plugins/corral/README.md](
+   https://github.com/loopdotcoop/undoiverse/tree/master/plugins/corral)
+2. [plugins/develop/README.md](
+   https://github.com/loopdotcoop/undoiverse/tree/master/plugins/develop)
+3. [plugins/history/README.md](
+   https://github.com/loopdotcoop/undoiverse/tree/master/plugins/history)
+4. [plugins/message/README.md](
+   https://github.com/loopdotcoop/undoiverse/tree/master/plugins/message)
+5. [plugins/own/README.md](
+   https://github.com/loopdotcoop/undoiverse/tree/master/plugins/own)
+6. [plugins/persist/README.md](
+   https://github.com/loopdotcoop/undoiverse/tree/master/plugins/persist)
+7. [plugins/query/README.md](
+   https://github.com/loopdotcoop/undoiverse/tree/master/plugins/query)
 
 
 ### Boilerplate Plugins
@@ -435,10 +443,17 @@ the ‘ATA’ date matches or beats the ‘ETA’ date, then we’re winning!
   ETA: 20161109  
   ATA: 20161110
 
+- ‘uu.js’ has `box()` (unit tested) for rendering ASCII boxes.  
+  `browse()` can return an ASCII box in ‘plugins/core/client’ and ‘...entity’.  
+  V: 0.2.1  
+  ETA: 20161123  
+  ATA: 20161122  
+
 
 ### Roadmap
 
-- ‘plugins/develop/log’ able to output to console and/or directly to file.  
+- `browse()` can return an ASCII box in ‘plugins/core/location’.  
+  ‘plugins/develop/log’ able to output to console and/or directly to file.  
   ‘plugins/develop/log’ formats for raw log-lines, ASCII rendered Locations,
   lists of Clients and Entities, and a summary of current state.  
   V: 0.3.0  
@@ -451,16 +466,19 @@ the ‘ATA’ date matches or beats the ‘ETA’ date, then we’re winning!
 
 - Core Usage Examples begun - between them, they should thoroughly cover all
   Undoiverse Class and Core Plugin code.  
+  ‘plugins/message/ask’ production-ready.  
   V: 0.5.0  
   ETA: 20161207  
 
 - Undoiverse Class and Core Plugins production-ready, thoroughly tested and
   reasonably well optimised.  
+  Remaining Develop Plugins production-ready: Alert, Benchmark, Reflect.  
   Core Usage Examples well tested on a variety of UAs/platforms.  
   V: 0.6.0  
   ETA: 20161214  
 
 - Command Line basically functional, passing a fairly good set of unit tests.  
+  Some Boilerplate Plugins production-ready.  
   V: 0.7.0  
   ETA: 20161221  
 
@@ -471,31 +489,32 @@ the ‘ATA’ date matches or beats the ‘ETA’ date, then we’re winning!
   V: 1.0.0  
   ETA: 20170111  
 
-- ‘Git Archive’ history plugin production-ready.  
+- ‘plugins/history/git’ and ‘plugins/persist/memory’ production-ready.  
   V: 1.1.0  
   ETA: 20170125  
 
-- Other history plugins production-ready: Rewind and Playback, Undo and Redo,
-  Fork and Merge, Historical Analysis.  
+- Remaining History Plugins production-ready: Github, Traverse, Scrub, Branch.  
   V: 1.2.0  
   ETA: 20170208  
 
-- Query plugins production-ready: Search and Filter, Move and Zoom Viewpoint.  
+- Remaining Persist Plugins production-ready: Mongo, Csv, Keyval, Sql.  
+  V: 1.2.0  
+  ETA: 20170220  
+
+- Query Plugins production-ready: Count, Find, Stats, Validator, Watcher.  
   V: 1.3.0  
   ETA: 20170301  
 
-- Ownership plugins production-ready: Open and Close, Save and Save As,
-  Credentials and Permissions, Lock and Unlock.  
+- Own Plugins production-ready: Allow, Hide, Lock, Open, Save.  
   V: 1.4.0  
   ETA: 20170322  
 
-- Composition plugins production-ready: Group and Ungroup, Copy, Cut, Paste
-  and Duplicate.  
+- Corral Plugins production-ready: Alias, Clipboard, Clone, Group, Repeat,
+  Unite.  
   V: 1.5.0  
   ETA: 20170412  
 
-- Communication plugins production-ready: Broadcast and Notifications,
-  Conference and Private Messaging.  
+- Remaining Message Plugins production-ready: Broadcast, Conference, Notify.  
   V: 1.6.0  
   ETA: 20170503  
 
@@ -504,7 +523,8 @@ the ‘ATA’ date matches or beats the ‘ETA’ date, then we’re winning!
   V: 1.7.0  
   ETA: 20170517  
 
-- Plugin usage examples complete.  
+- Plugin Usage Examples complete.  
+  Remaining Boilerplate Plugins production-ready.  
   Documentation tidy and correct.  
   V: 2.0.0  
   ETA: 20170607  
@@ -532,7 +552,9 @@ Undoiverse is an open source project by digital tinkerers
 Core and Standard Plugins. Also explain how developers can build their own
 Community Plugins, and make them available to other Undoiverse devs.]
 
+[__@todo__ Explain code-style — ES6 for Node.js, with minimal `{}`’s and `;`s.]
+
 
 ---
 
-#### README last modified 10th November 2016
+#### README last modified 22nd November 2016

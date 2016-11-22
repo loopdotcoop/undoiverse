@@ -1,5 +1,5 @@
 const FILE = 'test.js'
-    , VERSION = '0.2.0'
+    , VERSION = '0.2.2'
 
       //// Configuration, passed to every test-file.
     , config = {}
@@ -9,6 +9,7 @@ const FILE = 'test.js'
           require('./tests/core/client/client.test.js')(config)
         , require('./tests/core/entity/entity.test.js')(config)
         , require('./tests/core/location/location.test.js')(config)
+        , require('./tests/develop/log/log.test.js')(config)
         , require('./tests/uu/uu.test.js')(config)
       ]
 
