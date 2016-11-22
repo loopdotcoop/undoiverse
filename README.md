@@ -445,7 +445,7 @@ the ‘ATA’ date matches or beats the ‘ETA’ date, then we’re winning!
 
 - ‘uu.js’ has `box()` (unit tested) for rendering ASCII boxes.  
   `browse()` can return an ASCII box in ‘plugins/core/client’ and ‘...entity’.  
-  V: 0.2.1  
+  V: 0.2.2  
   ETA: 20161123  
   ATA: 20161122  
 
@@ -457,18 +457,18 @@ the ‘ATA’ date matches or beats the ‘ETA’ date, then we’re winning!
   ‘plugins/develop/log’ formats for raw log-lines, ASCII rendered Locations,
   lists of Clients and Entities, and a summary of current state.  
   V: 0.3.0  
-  ETA: 20161123  
+  ETA: 20161130  
 
 - Stronger Undoiverse Class and Core Plugins, passing a decent set of unit
   tests. Unit tests now test against the output of ‘plugins/develop/log’.  
   V: 0.4.0  
-  ETA: 20161130  
+  ETA: 20161105  
 
 - Core Usage Examples begun - between them, they should thoroughly cover all
   Undoiverse Class and Core Plugin code.  
   ‘plugins/message/ask’ production-ready.  
   V: 0.5.0  
-  ETA: 20161207  
+  ETA: 20161209  
 
 - Undoiverse Class and Core Plugins production-ready, thoroughly tested and
   reasonably well optimised.  
