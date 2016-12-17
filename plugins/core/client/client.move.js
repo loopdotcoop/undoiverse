@@ -1,5 +1,5 @@
 const FILE = 'plugins/core/client/client.move.js'
-    , VERSION = '0.2.2'
+    , VERSION = '0.2.3'
     , PLUGIN = 'client'
     , uu = require('../../../uu.js') // Undoiverse Utilities
 ;

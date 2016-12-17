@@ -457,77 +457,77 @@ the ‘ATA’ date matches or beats the ‘ETA’ date, then we’re winning!
   ‘plugins/develop/log’ formats for raw log-lines, ASCII rendered Locations,
   lists of Clients and Entities, and a summary of current state.  
   V: 0.3.0  
-  ETA: 20161130  
+  ETA: 20161230  
 
 - Stronger Undoiverse Class and Core Plugins, passing a decent set of unit
   tests. Unit tests now test against the output of ‘plugins/develop/log’.  
   V: 0.4.0  
-  ETA: 20161105  
+  ETA: 20161205  
 
 - Core Usage Examples begun - between them, they should thoroughly cover all
   Undoiverse Class and Core Plugin code.  
   ‘plugins/message/ask’ production-ready.  
   V: 0.5.0  
-  ETA: 20161209  
+  ETA: 20170109  
 
 - Undoiverse Class and Core Plugins production-ready, thoroughly tested and
   reasonably well optimised.  
   Remaining Develop Plugins production-ready: Alert, Benchmark, Reflect.  
   Core Usage Examples well tested on a variety of UAs/platforms.  
   V: 0.6.0  
-  ETA: 20161214  
+  ETA: 20170114  
 
 - Command Line basically functional, passing a fairly good set of unit tests.  
   Some Boilerplate Plugins production-ready.  
   V: 0.7.0  
-  ETA: 20161221  
+  ETA: 20170121  
 
 - Documentation tidy and correct. Complete for Undoiverse Class, Core Plugins,
   ‘plugins/develop/log’ and Core Usage Examples. Incomplete (with ‘@todos’)
   for Command Line, the remaining Standard Plugins, Community Plugins.  
   http://undoiverse.loop.coop/ is responsive and properly styled, with a logo.  
   V: 1.0.0  
-  ETA: 20170111  
+  ETA: 20170211  
 
 - ‘plugins/history/git’ and ‘plugins/persist/memory’ production-ready.  
   V: 1.1.0  
-  ETA: 20170125  
+  ETA: 20170225  
 
 - Remaining History Plugins production-ready: Github, Traverse, Scrub, Branch.  
   V: 1.2.0  
-  ETA: 20170208  
+  ETA: 20170308  
 
 - Remaining Persist Plugins production-ready: Mongo, Csv, Keyval, Sql.  
   V: 1.2.0  
-  ETA: 20170220  
+  ETA: 20170320  
 
 - Query Plugins production-ready: Count, Find, Stats, Validator, Watcher.  
   V: 1.3.0  
-  ETA: 20170301  
+  ETA: 20170401  
 
 - Own Plugins production-ready: Allow, Hide, Lock, Open, Save.  
   V: 1.4.0  
-  ETA: 20170322  
+  ETA: 20170422  
 
 - Corral Plugins production-ready: Alias, Clipboard, Clone, Group, Repeat,
   Unite.  
   V: 1.5.0  
-  ETA: 20170412  
+  ETA: 20170512  
 
 - Remaining Message Plugins production-ready: Broadcast, Conference, Notify.  
   V: 1.6.0  
-  ETA: 20170503  
+  ETA: 20170603  
 
 - Polish the Command Line experience, with an excellent set of unit tests which
   find problems across a wide range of platforms.  
   V: 1.7.0  
-  ETA: 20170517  
+  ETA: 20170617  
 
 - Plugin Usage Examples complete.  
   Remaining Boilerplate Plugins production-ready.  
   Documentation tidy and correct.  
   V: 2.0.0  
-  ETA: 20170607  
+  ETA: 20170707  
 
 - Arrive at a conclusion whether major (breaking) API changes are needed to the
   Undoiverse Class and the Core and Standard Plugins. Ideally not, but if they
@@ -537,7 +537,7 @@ the ‘ATA’ date matches or beats the ‘ETA’ date, then we’re winning!
   Progress in 2018 and beyond will be made through Community Plugins, better
   examples, better documentation, and so on.  
   V: 2.1.0  
-  ETA: 20170906  
+  ETA: 20171006  
 
 
 

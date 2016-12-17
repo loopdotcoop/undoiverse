@@ -1,5 +1,5 @@
 const FILE = 'plugins/core/entity/entity.properties.js'
-    , VERSION = '0.2.2'
+    , VERSION = '0.2.3'
     , PLUGIN = 'entity'
     , uu = require('../../../uu.js') // Undoiverse Utilities
 ;

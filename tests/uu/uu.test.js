@@ -1,5 +1,5 @@
 const FILE = 'tests/uu/uu.test.js'
-    , VERSION = '0.2.2'
+    , VERSION = '0.2.3'
     , PLUGIN = '(not a plugin)'
     , a = require('assert')
     , uu = require('../../uu.js')

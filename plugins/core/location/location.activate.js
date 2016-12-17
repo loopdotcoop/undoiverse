@@ -1,5 +1,5 @@
 const FILE = 'plugins/core/location/location.activate.js'
-    , VERSION = '0.2.2'
+    , VERSION = '0.2.3'
     , PLUGIN = 'location'
     , uu = require('../../../uu.js') // Undoiverse Utilities
 ;

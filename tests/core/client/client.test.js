@@ -1,5 +1,5 @@
 const FILE = 'tests/core/client/client.test.js'
-    , VERSION = '0.2.2'
+    , VERSION = '0.2.3'
     , PLUGIN = 'client'
     , a = require('assert')
 ;
@@ -20,7 +20,7 @@ module.exports = config => {
     uvse => {
       a.strictEqual(uvse.client.FILE, 'plugins/core/client/client.activate.js',
         `client.FILE has an unexpected value`);
-      a.strictEqual(uvse.client.VERSION, '0.2.2',
+      a.strictEqual(uvse.client.VERSION, '0.2.3',
         `client.VERSION has an unexpected value`);
     },
 

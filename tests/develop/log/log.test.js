@@ -1,5 +1,5 @@
 const FILE = 'tests/develop/log/log.test.js'
-    , VERSION = '0.2.2'
+    , VERSION = '0.2.3'
     , PLUGIN = 'develop'
     , a = require('assert')
 ;
@@ -29,7 +29,7 @@ module.exports = config => {
       a.strictEqual(uvse.develop.log.FILE,
         'plugins/develop/log/log.activate.js',
         `develop.log.FILE has an unexpected value`)
-      a.strictEqual(uvse.develop.log.VERSION, '0.2.2',
+      a.strictEqual(uvse.develop.log.VERSION, '0.2.3',
         `develop.log.VERSION has an unexpected value`)
     },
 

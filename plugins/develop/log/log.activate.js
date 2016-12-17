@@ -1,5 +1,5 @@
 const FILE = 'plugins/develop/log/log.activate.js'
-    , VERSION = '0.2.2'
+    , VERSION = '0.2.3'
     , PLUGIN = 'log'
     , uu = require('../../../uu.js') // Undoiverse Utilities
 ;

@@ -1,5 +1,5 @@
 const FILE = 'plugins/boilerplate/cancel/cancel.activate.js'
-    , VERSION = '0.2.2'
+    , VERSION = '0.2.3'
     , PLUGIN = 'cancel'
     , uu = require('../../../uu.js') // Undoiverse Utilities
 ;

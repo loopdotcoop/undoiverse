@@ -1,5 +1,5 @@
 const FILE = 'undoiverse.js'
-    , VERSION = '0.2.2'
+    , VERSION = '0.2.3'
     , uu = require('./uu.js') // Undoiverse Utilities
 ;
 

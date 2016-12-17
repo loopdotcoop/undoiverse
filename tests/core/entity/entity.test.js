@@ -1,5 +1,5 @@
 const FILE = 'tests/core/entity/entity.test.js'
-    , VERSION = '0.2.2'
+    , VERSION = '0.2.3'
     , PLUGIN = 'entity'
     , a = require('assert')
 ;
@@ -20,7 +20,7 @@ module.exports = config => {
     uvse => {
       a.strictEqual(uvse.entity.FILE, 'plugins/core/entity/entity.activate.js',
         `entity.FILE has an unexpected value`);
-      a.strictEqual(uvse.entity.VERSION, '0.2.2',
+      a.strictEqual(uvse.entity.VERSION, '0.2.3',
         `entity.VERSION has an unexpected value`);
     },
 
